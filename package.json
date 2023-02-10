@@ -1,0 +1,32 @@
+{
+  "name": "placemark-hapi",
+  "version": "0.1.0",
+  "description": "PlaceMark is a web app built around Points of Interest.",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "lint": "./node_modules/.bin/eslint . --ext .js"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grzpiotrowski/placemark-hapi.git"
+  },
+  "author": "Grzegorz Piotrowski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/grzpiotrowski/placemark-hapi/issues"
+  },
+  "homepage": "https://github.com/grzpiotrowski/placemark-hapi#readme",
+  "devDependencies": {
+    "eslint": "^8.34.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-import": "^2.27.5",
+    "prettier": "^2.8.4"
+  },
+  "dependencies": {
+    "@hapi/hapi": "^21.2.1"
+  }
+}
