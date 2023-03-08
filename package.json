@@ -28,6 +28,8 @@
   "dependencies": {
     "@hapi/hapi": "^21.2.1",
     "@hapi/vision": "^7.0.0",
-    "handlebars": "^4.7.7"
+    "handlebars": "^4.7.7",
+    "joi": "^17.8.3",
+    "uuid": "^9.0.0"
   }
 }
