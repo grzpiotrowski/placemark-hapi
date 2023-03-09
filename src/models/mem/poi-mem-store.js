@@ -14,12 +14,15 @@ export const poiMemStore = {
   },
 
   async getPoiById(id) {
-    return pois.find((poi) => poi._id === id);
+    let poi = pois.find((poi) => poi._id === id);
+    if (poi === undefined) poi = null;
+    return poi;
+    
   },
 
   async deletePoiById(id) {
     const index = pois.findIndex((poi) => poi._id === id);
-    pois.splice(index, 1);
+    if (index !== -1) pois.splice(index, 1);
   },
 
   async deleteAllPois() {
