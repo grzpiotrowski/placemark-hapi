@@ -14,7 +14,7 @@ export const poiMemStore = {
   },
 
   async getPoiById(id) {
-    let poi = pois.find((poi) => poi._id === id);
+    let poi = pois.find((p) => p._id === id);
     if (poi === undefined) poi = null;
     return poi;
     
