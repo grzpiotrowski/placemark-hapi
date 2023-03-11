@@ -3,6 +3,7 @@ import { userMemStore } from "./mem/user-mem-store.js";
 
 export const db = {
   poiStore: null,
+  userStore: null,
 
   init() {
     this.poiStore = poiMemStore;
