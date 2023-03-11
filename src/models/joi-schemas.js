@@ -5,5 +5,5 @@ export const PoiSpec = {
   description: Joi.string().optional(),
   latitude: Joi.number().required(),
   longitude: Joi.number().required(),
-  
+
 };
