@@ -1,0 +1,25 @@
+{
+  "pois": [
+    {
+      "name": "Lugnaquilla",
+      "description": "Lugnaquilla, at 925 metres, is the highest Irish mountain outside of Kerry.",
+      "latitude": 52.96714,
+      "longitude": -6.464618,
+      "_id": "6e7f5c2c-0dda-4f79-93cb-ebe4bcbfd38e"
+    },
+    {
+      "name": "Carrauntoohil",
+      "description": "Carrauntoohil is the highest mountain in Ireland at 1,038.6 metres",
+      "latitude": 51.999445,
+      "longitude": -9.742693,
+      "_id": "e2546d73-341f-4edc-b4ed-ea7c55ee7110"
+    },
+    {
+      "name": "Tonelagee",
+      "description": "At 817 metres, Tonelagee is the third highest in the Wicklow mountains. It's name means 'backside to the wind'",
+      "latitude": 53.053606,
+      "longitude": -6.382171,
+      "_id": "045e968d-b50a-45d1-b591-11769210f33d"
+    }
+  ]
+}

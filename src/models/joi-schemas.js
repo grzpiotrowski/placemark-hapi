@@ -2,6 +2,7 @@ import Joi from "joi";
 
 export const PoiSpec = {
   name: Joi.string().required(),
+  category: Joi.string().optional(),
   description: Joi.string().optional(),
   latitude: Joi.number().required(),
   longitude: Joi.number().required(),
