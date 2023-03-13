@@ -7,3 +7,16 @@ export const PoiSpec = {
   longitude: Joi.number().required(),
 
 };
+
+export const UserSpec = {
+  firstName: Joi.string().required(),
+  lastName: Joi.string().required(),
+  email: Joi.string().email().required(),
+  password: Joi.string().required(),
+};
+
+export const UserCredentialsSpec = {
+  email: Joi.string().email().required(),
+  password: Joi.string().required(),
+};
+
