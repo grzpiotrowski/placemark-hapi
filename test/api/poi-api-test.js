@@ -20,7 +20,7 @@ suite("Poi API tests", () => {
   teardown(async () => {});
 
   test("create poi", async () => {
-    const returnedPoi = await poiService.createPoi(mozart);
+    const returnedPoi = await poiService.createPoi(poiSample);
     assert.isNotNull(returnedPoi);
     assertSubset(poiSample, returnedPoi);
   });
@@ -43,7 +43,7 @@ suite("Poi API tests", () => {
       // eslint-disable-next-line no-await-in-loop
       await poiService.createPoi(testPois[i]);
     }
-    let returnedPoints = await poiService.getAllPoi();
+    let returnedPoints = await poiService.getAllPois();
     assert.equal(returnedPoints.length, testPois.length);
     await poiService.deleteAllPois();
     returnedPoints = await poiService.getAllPois();
