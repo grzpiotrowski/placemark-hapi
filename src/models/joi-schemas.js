@@ -21,3 +21,4 @@ export const UserCredentialsSpec = {
   password: Joi.string().required(),
 };
 
+
