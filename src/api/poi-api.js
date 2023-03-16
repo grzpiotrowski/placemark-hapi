@@ -31,4 +31,5 @@ export const poiApi = {
     handler: async function (request, h) {
     },
   },
+
 };
