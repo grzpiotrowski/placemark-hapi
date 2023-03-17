@@ -2,6 +2,9 @@
 
 PlaceMark is a web app built around Points of Interest.
 
+## Features
+TBD
+
 ## Requirements
 [MongoDB](https://www.mongodb.com/) - You can download the community version from here: https://www.mongodb.com/try/download/community
 
@@ -36,6 +39,13 @@ Start the server on localhost:
 npm run start
 ```
 
+### Running the tests
+To run all unit tests, use:
+```
+npm run test
+```
+Make sure that the Hapi server and MongoDB service are running prior to testing.
+
 ## Resources
 * Gitflow Workflow \
 https://www.atlassian.com/git/tutorials/comparing-workflows/gitflow-workflow
@@ -45,3 +55,9 @@ https://codingsight.com/git-branching-naming-convention-best-practices/
 
 * Font Awesome \
 https://fontawesome.com/icons
+
+* Bulma Documentation \
+https://bulma.io/documentation/
+
+* Mongoose Documentation - Aggregate \
+https://mongoosejs.com/docs/api/aggregate.html
