@@ -50,29 +50,4 @@ export const poiService = {
     return res.data;
   },
 
-  async createCategory(category) {
-    const res = await axios.post(`${this.placemarkUrl}/api/categories`, category);
-    return res.data;
-  },
-
-  async deleteAllCategories() {
-    const response = await axios.delete(`${this.placemarkUrl}/api/categories`);
-    return response.data;
-  },
-
-  async deleteCategory(id) {
-    const response = await axios.delete(`${this.placemarkUrl}/api/categories/${id}`);
-    return response;
-  },
-
-  async getAllCategories() {
-    const res = await axios.get(`${this.placemarkUrl}/api/categories`);
-    return res.data;
-  },
-
-  async getCategory(id) {
-    const res = await axios.get(`${this.placemarkUrl}/api/categories/${id}`);
-    return res.data;
-  },
-
 };

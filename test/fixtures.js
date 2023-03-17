@@ -54,20 +54,4 @@ export const testUsers = [
   }
 ];
 
-export const categorySample = {
-  name: "Mountain"
-};
-
-export const testCategories = [
-  {
-    name: "Hill"
-  },
-  {
-    name: "Lake"
-  },
-  {
-    name: "River"
-  }
-];
-
 export const serviceUrl = "http://localhost:3000";

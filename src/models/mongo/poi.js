@@ -4,10 +4,7 @@ const { Schema } = Mongoose;
 
 const poiSchema = new Schema({
   name: String,
-  category: {
-    type: Schema.Types.ObjectId,
-    ref: "Category",
-  },
+  category: String,
   description: String,
   latitude: Number,
   longitude: Number,
