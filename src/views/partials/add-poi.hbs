@@ -5,7 +5,14 @@
         <label class="label">POI Name</label> <input class="input" type="text" placeholder="Enter POI Name" name="name">
       </div>
       <div class="field">
-        <label class="label">Category</label> <input class="input" type="text" placeholder="Enter POI Category" name="category">
+        <label class="label">Category</label>
+        <div class="select">
+          <select name="category">
+            {{#each categories}}
+              <option value={{_id}}>{{name}}</option>
+            {{/each}}
+          </select>
+        </div>
       </div>
       <div class="field">
         <label class="label">Latitude</label> <input class="input" type="number" placeholder="0.0000" min="-90" max="90" step="any" name="latitude">

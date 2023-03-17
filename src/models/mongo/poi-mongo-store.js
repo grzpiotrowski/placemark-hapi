@@ -2,13 +2,13 @@ import { Poi } from "./poi.js";
 
 export const poiMongoStore = {
   async getAllPois() {
-    const pois = await Poi.find().lean();
+    const pois = await Poi.find().populate("category").lean();
     return pois;
   },
 
   async getPoiById(id) {
     if (id) {
-      const poi = await Poi.findOne({ _id: id }).lean();
+      const poi = await Poi.findOne({ _id: id }).populate("category").lean();
       return poi;
     }
     return null;
@@ -21,7 +21,7 @@ export const poiMongoStore = {
   },
 
   async getUserPois(id) {
-    const pois = await Poi.find({ userid: id }).lean();
+    const pois = await Poi.find({ userid: id }).populate("category").lean();
     return pois;
   },
 
@@ -33,11 +33,22 @@ export const poiMongoStore = {
         }
       },
       {
+        $lookup: {
+          from: "categories",
+          localField: "category",
+          foreignField: "_id",
+          as: "category"
+        }
+      },
+      {
+        $unwind: "$category"
+      },
+      {
         $group: {
           _id: "$category",
           pois: { $push: "$$ROOT" }
         }
-      }      
+      }
     ]);
     return groupedPois;
   },
@@ -45,11 +56,22 @@ export const poiMongoStore = {
   async getAllPoisGroupedByCategory(id) {
     const groupedPois = await Poi.aggregate([
       {
+        $lookup: {
+          from: "categories",
+          localField: "category",
+          foreignField: "_id",
+          as: "category"
+        }
+      },
+      {
+        $unwind: "$category"
+      },
+      {
         $group: {
           _id: "$category",
           pois: { $push: "$$ROOT" }
         }
-      }      
+      }   
     ]);
     return groupedPois;
   },

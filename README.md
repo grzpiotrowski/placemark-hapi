@@ -58,3 +58,6 @@ https://fontawesome.com/icons
 
 * Bulma Documentation \
 https://bulma.io/documentation/
+
+* Mongoose Documentation - Aggregate \
+https://mongoosejs.com/docs/api/aggregate.html

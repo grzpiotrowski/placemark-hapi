@@ -5,10 +5,12 @@ export const dashboardController = {
     handler: async function (request, h) {
       const loggedInUser = request.auth.credentials
       const groupedPois = await db.poiStore.getUserPoisGroupedByCategory(loggedInUser._id);
+      const categories = await db.categoryStore.getAllCategories();
       const viewData = {
         title: "Placemark - Dashboard",
         user: loggedInUser,
         groupedPois: groupedPois,
+        categories: categories,
       };
       return h.view("dashboard-view", viewData);
     },
