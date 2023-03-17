@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node src/server.js",
-    "dev": "./node_modules/.bin/nodemon  src/server.js",
+    "dev": "nodemon src/server.js",
     "lint": "eslint . --ext .js",
     "test": "mocha --ui tdd test/**/*.js -exit"
   },
