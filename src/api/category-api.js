@@ -34,7 +34,7 @@ export const categoryApi = {
     handler: async function (request, h) {
       try {
         const category = request.payload;
-        const newCategory = await db.categoryiStore.addCategory(category);
+        const newCategory = await db.categoryStore.addCategory(category);
         if (newCategory) {
           return h.response(newCategory).code(201);
         }

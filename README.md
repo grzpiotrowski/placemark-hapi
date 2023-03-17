@@ -40,7 +40,11 @@ npm run start
 ```
 
 ### Running the tests
-TBD
+To run all unit tests, use:
+```
+npm run test
+```
+Make sure that the Hapi server and MongoDB service are running prior to testing.
 
 ## Resources
 * Gitflow Workflow \
