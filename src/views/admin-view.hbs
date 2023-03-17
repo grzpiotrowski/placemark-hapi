@@ -1,0 +1,22 @@
+<section class="section">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Email</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Scope</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each allUsers}}
+        <tr>
+          <td>{{email}}</td>
+          <td>{{firstName}}</td>
+          <td>{{lastName}}</td>
+          <td>{{scope}}</td>
+        </tr>
+      {{/each}}
+    </tbody>
+  </table>
+</section>

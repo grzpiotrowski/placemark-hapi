@@ -1,6 +1,7 @@
 import { dashboardController } from "./controllers/dashboard-controller.js";
 import { accountsController } from "./controllers/accounts-controller.js";
 import { poiController } from "./controllers/poi-controller.js";
+import { adminController } from "./controllers/admin-controller.js";
 
 export const webRoutes = [
     { method: "GET", path: "/", config: accountsController.index },
@@ -14,4 +15,6 @@ export const webRoutes = [
     { method: "POST", path: "/dashboard/addpoi", config: dashboardController.addPoi },
 
     { method: "GET", path: "/poi/{id}", config: poiController.index },
+
+    { method: "GET", path: "/adminpanel", config: adminController.index },
   ];
