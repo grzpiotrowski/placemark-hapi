@@ -14,10 +14,18 @@ export const categoryMongoStore = {
     return null;
   },
 
+  async getCategoryByName(name) {
+    if (name) {
+      const category = await Category.findOne({ name: name }).lean();
+      return category;
+    }
+    return null;
+  },
+
   async addCategory(category) {
     const newCategory = new Category(category);
     const categoryObj = await newCategory.save();
-    return this.getCategroyById(categoryObj._id);
+    return this.getCategoryById(categoryObj._id);
   },
 
   async deleteCategoryById(id) {
@@ -29,6 +37,6 @@ export const categoryMongoStore = {
   },
 
   async deleteAllCategories() {
-    await Categories.deleteMany({});
+    await Category.deleteMany({});
   }
 };
