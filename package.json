@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node src/server.js",
+    "dev": "./node_modules/.bin/nodemon  src/server.js",
     "lint": "eslint . --ext .js",
     "test": "mocha --ui tdd test/**/*.js -exit"
   },
@@ -27,6 +28,7 @@
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-import": "^2.27.5",
     "mocha": "^10.2.0",
+    "nodemon": "^2.0.21",
     "prettier": "^2.8.4"
   },
   "dependencies": {
