@@ -7,6 +7,10 @@ export const poiMemStore = {
     return pois;
   },
 
+  async getUserPois(userid) {
+    return pois.filter((poi) => poi.userid === userid);
+  },
+
   async addPoi(poi) {
     poi._id = v4();
     pois.push(poi);
