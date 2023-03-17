@@ -16,4 +16,13 @@ export const adminController = {
       return h.view("admin-view", viewData);
     },
   },
+
+  deleteUser: {
+    auth: { strategy: "session", scope: "admin"},
+    handler: async function (request, h) {
+      const userId = request.params.id;
+      await db.userStore.deleteUserById(userId);
+      return h.redirect("/adminpanel");
+    }
+  }
 };

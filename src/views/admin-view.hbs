@@ -6,6 +6,7 @@
         <th>First Name</th>
         <th>Last Name</th>
         <th>Scope</th>
+        <th></th>
       </tr>
     </thead>
     <tbody>
@@ -15,6 +16,11 @@
           <td>{{firstName}}</td>
           <td>{{lastName}}</td>
           <td>{{scope}}</td>
+          <td>
+            <a href="/adminpanel/deleteuser/{{_id}}" class="icon has-text-danger" data-tooltip="Delete User">
+              <i class="fa-solid fa-trash-can"></i>
+            </a>
+          </td>
         </tr>
       {{/each}}
     </tbody>
