@@ -1,6 +1,19 @@
 <form action="/dashboard/addpoi" method="POST">
-  <div class="field">
-    <label class="label">POI Name</label> <input class="input" type="text" placeholder="Enter POI Name" name="name">
+  <div class="field is-horizontal">
+    <div class="field-body">
+      <div class="field">
+        <label class="label">POI Name</label> <input class="input" type="text" placeholder="Enter POI Name" name="name">
+      </div>
+      <div class="field">
+        <label class="label">Category</label> <input class="input" type="text" placeholder="Enter POI Category" name="category">
+      </div>
+      <div class="field">
+        <label class="label">Latitude</label> <input class="input" type="number" placeholder="0.0000" min="-90" max="90" step="any" name="latitude">
+      </div>
+      <div class="field">
+        <label class="label">Longitude</label> <input class="input" type="number" placeholder="0.0000" min="-180" max="180" step="any" name="longitude">
+      </div>
+    </div>
   </div>
   <button class="button is-link">Add POI</button>
 </form>
