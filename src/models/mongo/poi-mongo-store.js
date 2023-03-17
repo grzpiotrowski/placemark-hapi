@@ -42,6 +42,18 @@ export const poiMongoStore = {
     return groupedPois;
   },
 
+  async getAllPoisGroupedByCategory(id) {
+    const groupedPois = await Poi.aggregate([
+      {
+        $group: {
+          _id: "$category",
+          pois: { $push: "$$ROOT" }
+        }
+      }      
+    ]);
+    return groupedPois;
+  },
+
   async deletePoiById(id) {
     try {
       await Poi.deleteOne({ _id: id });
