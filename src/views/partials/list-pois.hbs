@@ -1,7 +1,14 @@
-{{#each pois}}
-<a href="/poi/{{_id}}" class="box box-link-hover-shadow">
-  <h2 class="title">
-    {{name}}
-  </h2>
-</a>
+{{#each groupedPois}}
+<h2 class="title">
+  {{_id}}s
+</h2>
+<hr>
+  {{#each pois}}
+  <a href="/poi/{{this._id}}" class="box box-link-hover-shadow">
+    <h2 class="title">
+      {{this.name}}
+    </h2>
+  </a>
+  {{/each}}
+
 {{/each}}

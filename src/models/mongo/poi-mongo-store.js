@@ -21,8 +21,25 @@ export const poiMongoStore = {
   },
 
   async getUserPois(id) {
-    const poi = await Poi.find({ userid: id }).lean();
-    return poi;
+    const pois = await Poi.find({ userid: id }).lean();
+    return pois;
+  },
+
+  async getUserPoisGroupedByCategory(id) {
+    const groupedPois = await Poi.aggregate([
+      {
+        $match: {
+          userid: id
+        }
+      },
+      {
+        $group: {
+          _id: "$category",
+          pois: { $push: "$$ROOT" }
+        }
+      }      
+    ]);
+    return groupedPois;
   },
 
   async deletePoiById(id) {
