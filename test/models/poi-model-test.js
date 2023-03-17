@@ -6,7 +6,7 @@ import { assertSubset } from "../test-utils.js";
 suite("Poi Model tests", () => {
 
   setup(async () => {
-    db.init();
+    db.init("mongo");
     await db.poiStore.deleteAllPois();
     for (let i = 0; i < testPois.length; i += 1) {
       // eslint-disable-next-line no-await-in-loop

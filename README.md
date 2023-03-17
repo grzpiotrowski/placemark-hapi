@@ -2,6 +2,39 @@
 
 PlaceMark is a web app built around Points of Interest.
 
+## Requirements
+[MongoDB](https://www.mongodb.com/) - You can download the community version from here: https://www.mongodb.com/try/download/community
+
+[NodeJs](https://nodejs.org/en) v16 - You can download and install it from here: https://nodejs.org/en/blog/release/v16.16.0
+
+## Getting Started
+### MongoDB
+Create a directory for the database at the location of your choice:
+```
+mkdir db
+```
+Launch MongoDB service:
+```
+mongod -dbpath db
+```
+
+### Launching the project
+Clone the repository:
+```
+git clone https://github.com/grzpiotrowski/placemark-hapi.git
+```
+Go into the project directory:
+```
+cd placemark-hapi
+```
+Install npm modules:
+```
+npm i
+```
+Start the server on localhost:
+```
+npm run start
+```
 
 ## Resources
 * Gitflow Workflow \

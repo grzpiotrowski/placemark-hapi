@@ -31,10 +31,14 @@
   },
   "dependencies": {
     "@hapi/boom": "^10.0.1",
+    "@hapi/cookie": "^12.0.1",
     "@hapi/hapi": "^21.2.1",
     "@hapi/vision": "^7.0.0",
+    "dotenv": "^16.0.3",
     "handlebars": "^4.7.7",
     "joi": "^17.8.3",
+    "lowdb": "^5.1.0",
+    "mongoose": "^7.0.2",
     "uuid": "^9.0.0"
   }
 }

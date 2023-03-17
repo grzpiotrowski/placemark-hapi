@@ -17,7 +17,6 @@ export const poiMemStore = {
     let poi = pois.find((p) => p._id === id);
     if (poi === undefined) poi = null;
     return poi;
-    
   },
 
   async deletePoiById(id) {
