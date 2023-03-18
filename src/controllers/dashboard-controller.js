@@ -6,11 +6,13 @@ export const dashboardController = {
       const loggedInUser = request.auth.credentials
       const groupedPois = await db.poiStore.getUserPoisGroupedByCategory(loggedInUser._id);
       const categories = await db.categoryStore.getAllCategories();
+      const isAdmin = loggedInUser.scope.includes("admin");
       const viewData = {
         title: "Placemark - Dashboard",
         user: loggedInUser,
         groupedPois: groupedPois,
         categories: categories,
+        isAdmin: isAdmin,
       };
       return h.view("dashboard-view", viewData);
     },

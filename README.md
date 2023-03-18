@@ -61,3 +61,12 @@ https://bulma.io/documentation/
 
 * Mongoose Documentation - Aggregate \
 https://mongoosejs.com/docs/api/aggregate.html
+
+* Mongoose Documentation - SchemaTypes \
+https://mongoosejs.com/docs/schematypes.html#arrays
+
+* Authentication and Authorization with hapi \
+https://medium.com/@poeticninja/authentication-and-authorization-with-hapi-5529b5ecc8ec
+
+* hapi — Restrict User Access With Scopes \
+https://futurestud.io/tutorials/hapi-restrict-user-access-with-scopes
