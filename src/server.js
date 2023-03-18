@@ -6,11 +6,12 @@ import { fileURLToPath } from "url";
 import Joi from "joi";
 import Cookie from "@hapi/cookie";
 import dotenv from "dotenv";
+import HapiSwagger from "hapi-swagger";
+import Inert from "@hapi/inert";
 import { webRoutes } from "./web-routes.js";
 import { apiRoutes } from "./api-routes.js";
 import { db } from "./models/db.js";
 import { accountsController } from "./controllers/accounts-controller.js";
-import { adminController } from "./controllers/admin-controller.js";
 
 const result = dotenv.config();
 if (result.error) {
@@ -21,14 +22,28 @@ if (result.error) {
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const swaggerOptions = {
+  info: {
+    title: "Placemark API",
+    version: "0.5",
+  },
+};
+
 async function init() {
   const server = Hapi.server({
     port: 3000,
     host: "localhost",
   });
 
-  await server.register(Vision);
-  await server.register(Cookie);
+  await server.register([
+    Inert,
+    Vision,
+    Cookie,
+    {
+      plugin: HapiSwagger,
+      options: swaggerOptions,
+    },
+  ]);
   server.validator(Joi);
 
   server.views({
@@ -59,6 +74,7 @@ async function init() {
   server.route(apiRoutes);
   await server.start();
   console.log("Server running on %s", server.info.uri);
+  
 }
 
 process.on("unhandledRejection", (err) => {
