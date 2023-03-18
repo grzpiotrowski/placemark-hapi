@@ -4,6 +4,7 @@ export const IdSpec = Joi.alternatives().try(Joi.string(), Joi.object()).descrip
 
 export const PoiSpec = Joi.object()
   .keys({
+    userid: IdSpec,
     name: Joi.string().required().example("Lugnaquilla"),
     category: IdSpec,
     description: Joi.string().optional().example("Pretty high mountain."),
