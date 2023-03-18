@@ -16,6 +16,8 @@ export const webRoutes = [
     { method: "GET", path: "/dashboard/deletepoi/{id}", config: dashboardController.deletePoi },
 
     { method: "GET", path: "/poi/{id}", config: poiController.index },
+    { method: "GET", path: "/poi/edit/{id}", config: poiController.showEditPoi },
+    { method: "POST", path: "/poi/update/{id}", config: poiController.updatePoi },
 
     { method: "GET", path: "/adminpanel", config: adminController.index },
     { method: "GET", path: "/adminpanel/deleteuser/{id}", config: adminController.deleteUser },
