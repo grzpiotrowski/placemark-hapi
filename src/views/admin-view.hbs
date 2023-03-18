@@ -1,3 +1,5 @@
+{{> menu active="adminpanel" isAdmin=isAdmin}}
+
 <section class="section">
   <div class="box">
     <div class="title">Users</div>
@@ -61,8 +63,47 @@
     </table>
   </div>
   <hr>
+    <div class="box">
+    <div class="title">Categories</div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each categories}}
+          <tr>
+            <td>{{name}}</td>
+            <td>
+              <a href="/adminpanel/deletecategory/{{_id}}" class="icon has-text-danger">
+                <i class="fa-solid fa-trash-can"></i>
+              </a>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+    {{> add-category}}
+  </div>
+  <hr>
   <div class="box">
-
+    <div class="title">Analytics</div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Users total</th>
+          <th>POIs total</th>
+        </tr>
+      </thead>
+      <tbodu>
+        <tr>
+          <td>{{allUsers.length}}</td>
+          <td>{{allPois.length}}</td>
+        </tr>
+      </tbodu>
+    </table>
   </div>
 
 </section>
