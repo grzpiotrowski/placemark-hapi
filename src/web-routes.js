@@ -18,4 +18,5 @@ export const webRoutes = [
 
     { method: "GET", path: "/adminpanel", config: adminController.index },
     { method: "GET", path: "/adminpanel/deleteuser/{id}", config: adminController.deleteUser },
+    { method: "GET", path: "/adminpanel/deletepoi/{id}", config: adminController.deletePoi },
   ];

@@ -1,28 +1,68 @@
 <section class="section">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Email</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Scope</th>
-        <th></th>
-      </tr>
-    </thead>
-    <tbody>
-      {{#each allUsers}}
+  <div class="box">
+    <div class="title">Users</div>
+    <table class="table">
+      <thead>
         <tr>
-          <td>{{email}}</td>
-          <td>{{firstName}}</td>
-          <td>{{lastName}}</td>
-          <td>{{scope}}</td>
-          <td>
-            <a href="/adminpanel/deleteuser/{{_id}}" class="icon has-text-danger" data-tooltip="Delete User">
-              <i class="fa-solid fa-trash-can"></i>
-            </a>
-          </td>
+          <th>Email</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Scope</th>
+          <th></th>
         </tr>
-      {{/each}}
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        {{#each allUsers}}
+          <tr>
+            <td>{{email}}</td>
+            <td>{{firstName}}</td>
+            <td>{{lastName}}</td>
+            <td>{{scope}}</td>
+            <td>
+              <a href="/adminpanel/deleteuser/{{_id}}" class="icon has-text-danger">
+                <i class="fa-solid fa-trash-can"></i>
+              </a>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+  <hr>
+  <div class="box">
+    <div class="title">POIs</div>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Category</th>
+          <th>Latitude</th>
+          <th>Longitude</th>
+          <th>Owner</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each allPois}}
+          <tr>
+            <td>{{name}}</td>
+            <td>{{category.name}}</td>
+            <td>{{latitude}}</td>
+            <td>{{longitude}}</td>
+            <td>{{userid}}</td>
+            <td>
+              <a href="/adminpanel/deletepoi/{{_id}}" class="icon has-text-danger">
+                <i class="fa-solid fa-trash-can"></i>
+              </a>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+  <hr>
+  <div class="box">
+
+  </div>
+
 </section>
