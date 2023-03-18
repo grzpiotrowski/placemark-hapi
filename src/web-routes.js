@@ -13,6 +13,7 @@ export const webRoutes = [
   
     { method: "GET", path: "/dashboard", config: dashboardController.index },
     { method: "POST", path: "/dashboard/addpoi", config: dashboardController.addPoi },
+    { method: "GET", path: "/dashboard/deletepoi/{id}", config: dashboardController.deletePoi },
 
     { method: "GET", path: "/poi/{id}", config: poiController.index },
 
