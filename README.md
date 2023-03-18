@@ -70,3 +70,6 @@ https://medium.com/@poeticninja/authentication-and-authorization-with-hapi-5529b
 
 * hapi — Restrict User Access With Scopes \
 https://futurestud.io/tutorials/hapi-restrict-user-access-with-scopes
+
+* hapi Tutorials - Validation \
+https://hapi.dev/tutorials/validation/?lang=en_US

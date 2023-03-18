@@ -3,12 +3,14 @@ import { poiService } from "./poi-service.js";
 import { assertSubset } from "../test-utils.js";
 import { maggie, testUsers } from "../fixtures.js";
 
+const users = new Array(testUsers.length);
+
 suite("User API tests", () => {
   setup(async () => {
     await poiService.deleteAllUsers();
     for (let i = 0; i < testUsers.length; i += 1) {
       // eslint-disable-next-line no-await-in-loop
-      testUsers[i] = await poiService.createUser(testUsers[i]);
+      users[0] = await poiService.createUser(testUsers[i]);
     }
   });
   teardown(async () => {
@@ -29,8 +31,8 @@ suite("User API tests", () => {
   });
 
   test("get a user - success", async () => {
-    const returnedUser = await poiService.getUser(testUsers[0]._id);
-    assert.deepEqual(testUsers[0], returnedUser);
+    const returnedUser = await poiService.getUser(users[0]._id);
+    assert.deepEqual(users[0], returnedUser);
   });
 
   test("get a user - bad id", async () => {
@@ -46,7 +48,7 @@ suite("User API tests", () => {
   test("get a user - deleted user", async () => {
     await poiService.deleteAllUsers();
     try {
-      const returnedUser = await poiService.getUser(testUsers[0]._id);
+      const returnedUser = await poiService.getUser(users[0]._id);
       assert.fail("Should not return a response");
     } catch (error) {
       assert(error.response.data.message === "No User with this id");
