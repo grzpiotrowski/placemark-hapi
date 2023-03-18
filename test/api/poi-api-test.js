@@ -2,19 +2,23 @@ import { EventEmitter } from "events";
 import { assert } from "chai";
 import { poiService } from "./poi-service.js";
 import { assertSubset } from "../test-utils.js";
-import { maggie, poiSample, testPois } from "../fixtures.js";
+import { maggie, poiSample, testPois, categorySample } from "../fixtures.js";
 
 EventEmitter.setMaxListeners(25);
-
+// TODO: Issue: create poi and create multiple pois tests fail when ran with the whole suite but pass individually
 suite("Poi API tests", () => {
 
   let user = null;
+  let mountains = null;
 
   setup(async () => {
     await poiService.deleteAllPois();
     await poiService.deleteAllUsers();
+    await poiService.deleteAllCategories();
     user = await poiService.createUser(maggie);
-    poiService.userid = user._id;
+    mountains = await poiService.createCategory(categorySample);
+    poiSample.userid = user._id;
+    poiSample.category = mountains._id;
   });
 
   teardown(async () => {});
@@ -40,14 +44,15 @@ suite("Poi API tests", () => {
   test("create multiple pois", async () => {
     for (let i = 0; i < testPois.length; i += 1) {
       testPois[i].userid = user._id;
+      testPois[i].category = mountains._id;
       // eslint-disable-next-line no-await-in-loop
       await poiService.createPoi(testPois[i]);
     }
-    let returnedPoints = await poiService.getAllPois();
-    assert.equal(returnedPoints.length, testPois.length);
+    let returnedPois = await poiService.getAllPois();
+    assert.equal(returnedPois.length, testPois.length);
     await poiService.deleteAllPois();
-    returnedPoints = await poiService.getAllPois();
-    assert.equal(returnedPoints.length, 0);
+    returnedPois = await poiService.getAllPois();
+    assert.equal(returnedPois.length, 0);
   });
 
   test("remove non-existant poi", async () => {

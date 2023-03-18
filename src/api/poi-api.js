@@ -1,5 +1,7 @@
 import Boom from "@hapi/boom";
 import { db } from "../models/db.js";
+import { IdSpec, PoiSpec, PoiSpecPlus, PoiArraySpec } from "../models/joi-schemas.js";
+import { validationError } from "./logger.js";
 
 export const poiApi = {
   find: {
@@ -12,6 +14,10 @@ export const poiApi = {
         return Boom.serverUnavailable("Database Error");
       }
     },
+    tags: ["api"],
+    response: { schema: PoiArraySpec, failAction: validationError },
+    description: "Get all POIs",
+    notes: "Returns all POIs",
   },
 
   findOne: {
@@ -27,6 +33,11 @@ export const poiApi = {
         return Boom.serverUnavailable("No Poi with this id");
       }
     },
+    tags: ["api"],
+    description: "Find a POI",
+    notes: "Returns a POI",
+    validate: { params: { id: IdSpec }, failAction: validationError },
+    response: { schema: PoiSpecPlus, failAction: validationError },
   },
 
   create: {
@@ -43,6 +54,11 @@ export const poiApi = {
         return Boom.serverUnavailable("Database Error");
       }
     },
+    tags: ["api"],
+    description: "Create a POI",
+    notes: "Returns the newly created POI",
+    validate: { payload: PoiSpec },
+    response: { schema: PoiSpecPlus, failAction: validationError },
   },
 
   deleteOne: {
@@ -59,6 +75,9 @@ export const poiApi = {
         return Boom.serverUnavailable("No Poi with this id");
       }
     },
+    tags: ["api"],
+    description: "Delete a POI",
+    validate: { params: { id: IdSpec }, failAction: validationError },
   },
 
   deleteAll: {
@@ -71,5 +90,7 @@ export const poiApi = {
         return Boom.serverUnavailable("Database Error");
       }
     },
+    tags: ["api"],
+    description: "Delete all POIs",
   },
 };
