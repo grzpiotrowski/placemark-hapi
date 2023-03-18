@@ -1,15 +1,23 @@
 import Joi from "joi";
 
-export const PoiSpec = {
-  name: Joi.string().required(),
-  category: Joi.string().optional(),
-  description: Joi.string().optional(),
-  latitude: Joi.number().required(),
-  longitude: Joi.number().required(),
-
-};
-
 export const IdSpec = Joi.alternatives().try(Joi.string(), Joi.object()).description("a valid ID");
+
+export const PoiSpec = Joi.object()
+  .keys({
+    name: Joi.string().required().example("Lugnaquilla"),
+    category: IdSpec,
+    description: Joi.string().optional().example("Pretty high mountain."),
+    latitude: Joi.number().allow("").required().example(53.123),
+    longitude: Joi.number().allow("").required().example(-6.321),
+  })
+  .label("Poi");
+
+export const PoiSpecPlus = PoiSpec.keys({
+  _id: IdSpec,
+  __v: Joi.number(),
+}).label("PoiPlus");
+
+export const PoiArraySpec = Joi.array().items(PoiSpecPlus).label("PoiArray");
 
 export const UserCredentialsSpec = Joi.object()
   .keys({
