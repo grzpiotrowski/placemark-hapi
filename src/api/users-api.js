@@ -12,6 +12,9 @@ export const usersApi = {
         return Boom.serverUnavailable("Database Error");
       }
     },
+    tags: ["api"],
+    description: "Get all users",
+    notes: "Returns details of all users",
   },
 
   findOne: {
