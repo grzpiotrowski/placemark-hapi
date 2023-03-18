@@ -10,6 +10,7 @@ import { webRoutes } from "./web-routes.js";
 import { apiRoutes } from "./api-routes.js";
 import { db } from "./models/db.js";
 import { accountsController } from "./controllers/accounts-controller.js";
+import { adminController } from "./controllers/admin-controller.js";
 
 const result = dotenv.config();
 if (result.error) {
