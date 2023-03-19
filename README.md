@@ -1,9 +1,33 @@
 # PlaceMark-hapi
 
-PlaceMark is a web app built around Points of Interest.
+PlaceMark is a web app built around Points of Interest. Users can add their own POIs which are grouped into pre-defined categories.
 
 ## Features
-TBD
+### Accounts
+- User signup/login
+- Cookie authentication
+- User scopes
+- Basic admin dashboard
+### Placemark Features
+- POIs with
+  - Name
+  - Description
+  - Category
+  - Latitude
+  - Longitude
+### API
+- API following Open API
+- Swagger documentation
+### Models
+- Mongo database
+- Models:
+  - User
+  - POI
+  - Category
+### Tests
+- API tests
+- Models tests
+
 
 ## Requirements
 [MongoDB](https://www.mongodb.com/) - You can download the community version from here: https://www.mongodb.com/try/download/community
