@@ -32,4 +32,12 @@ export const dashboardController = {
       return h.redirect("/dashboard");
     },
   },
+  
+  deletePoi: {
+    handler: async function(request, h) {
+      const poiId = request.params.id;
+      await db.poiStore.deletePoiById(poiId);
+      return h.redirect("/dashboard");
+    }
+  }
 };

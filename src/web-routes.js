@@ -13,12 +13,18 @@ export const webRoutes = [
   
     { method: "GET", path: "/dashboard", config: dashboardController.index },
     { method: "POST", path: "/dashboard/addpoi", config: dashboardController.addPoi },
+    { method: "GET", path: "/dashboard/deletepoi/{id}", config: dashboardController.deletePoi },
 
     { method: "GET", path: "/poi/{id}", config: poiController.index },
+    { method: "GET", path: "/poi/edit/{id}", config: poiController.showEditPoi },
+    { method: "POST", path: "/poi/update/{id}", config: poiController.updatePoi },
 
     { method: "GET", path: "/adminpanel", config: adminController.index },
     { method: "GET", path: "/adminpanel/deleteuser/{id}", config: adminController.deleteUser },
     { method: "GET", path: "/adminpanel/deletepoi/{id}", config: adminController.deletePoi },
     { method: "GET", path: "/adminpanel/deletecategory/{id}", config: adminController.deleteCategory },
     { method: "POST", path: "/adminpanel/addcategory", config: adminController.addCategory },
+
+    { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false } }
+
   ];

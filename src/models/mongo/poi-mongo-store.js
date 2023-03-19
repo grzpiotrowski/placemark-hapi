@@ -86,5 +86,15 @@ export const poiMongoStore = {
 
   async deleteAllPois() {
     await Poi.deleteMany({});
-  }
+  },
+
+  async updatePoi(poi, updatedPoi) {
+    const poiDoc = await Poi.findOne({ _id: poi._id });
+    poiDoc.title = updatedPoi.name;
+    poiDoc.category = updatedPoi.category;
+    poiDoc.description = updatedPoi.description;
+    poiDoc.latitude = updatedPoi.latitude;
+    poiDoc.longitude = updatedPoi.longitude;
+    await poiDoc.save();
+  },
 };
