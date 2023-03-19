@@ -14,14 +14,23 @@
           </span>
         </button>
       </header>
+      <div class="card-image">
+        <figure class="image is-3by1">
+          <img src="/images/poi-placeholder.jpg" alt="Placeholder Image">
+        </figure>
+      </div>
       <div class="card-content">
           <div class="content">
             {{this.description}}
           </div>
         </div>
         <footer class="card-footer">
-          <a href="/poi/{{this._id}}" class="card-footer-item">Open</a>
-          <a href="/dashboard/deletepoi/{{this._id}}" class="card-footer-item">Delete</a>
+          <a href="/poi/{{this._id}}" class="button is-medium is-fullwidth">
+            <i class="fa-solid fa-folder-open"></i>
+          </a>
+          <a href="/dashboard/deletepoi/{{this._id}}" class="button is-medium is-fullwidth">
+            <i class="fa-solid fa-trash-can has-text-danger"></i>
+          </a>
         </footer>
       </div>
     <br>

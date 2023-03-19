@@ -24,4 +24,7 @@ export const webRoutes = [
     { method: "GET", path: "/adminpanel/deletepoi/{id}", config: adminController.deletePoi },
     { method: "GET", path: "/adminpanel/deletecategory/{id}", config: adminController.deleteCategory },
     { method: "POST", path: "/adminpanel/addcategory", config: adminController.addCategory },
+
+    { method: "GET", path: "/{param*}", handler: { directory: { path: "./public" } }, options: { auth: false } }
+
   ];
