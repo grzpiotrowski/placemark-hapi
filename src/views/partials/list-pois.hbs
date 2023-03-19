@@ -2,16 +2,23 @@
 <h2 class="title is-3">
   {{_id.name}}s
 </h2>
-<hr>
   {{#each pois}}
-  <a href="/poi/{{this._id}}" class="box box-link-hover-shadow">
-    <h2 class="title is-4">
-      {{this.name}}
-    </h2>
-  </a>
-  <a href="/dashboard/deletepoi/{{this._id}}" class="icon has-text-danger">
-    <i class="fa-solid fa-trash-can"></i>
-  </a>
+    <div class="box">
+      <div class="columns">
+        <div class="column is-four-fifths">
+          <h2 class="title is-4"> {{this.name}} </h2>
+        </div>
+        <div class="column">
+          <a href="/poi/{{this._id}}" class="button is-medium icon has-text-info">
+            <i class="fa-solid fa-folder-open"></i>
+          </a></div>
+        <div class="column">
+          <a href="/dashboard/deletepoi/{{this._id}}" class="button is-medium icon has-text-danger">
+            <i class="fa-solid fa-trash-can"></i>
+          </a>
+        </div>
+      </div>
+    </div>
   {{/each}}
-
+  <hr>
 {{/each}}
