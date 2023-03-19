@@ -2,6 +2,10 @@
 
 PlaceMark is a web app built around Points of Interest. Users can add their own POIs which are grouped into pre-defined categories.
 
+Project deployed on Glitch:
+
+https://grzegorz-placemark.glitch.me/
+
 ## Features
 ### Accounts
 - User signup/login
@@ -15,6 +19,7 @@ PlaceMark is a web app built around Points of Interest. Users can add their own 
   - Category
   - Latitude
   - Longitude
+- Users can add/edit/remove POIs
 ### API
 - API following Open API
 - Swagger documentation
