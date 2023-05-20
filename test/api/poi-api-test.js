@@ -5,16 +5,19 @@ import { assertSubset } from "../test-utils.js";
 import { maggie, poiSample, testPois, categorySample } from "../fixtures.js";
 
 EventEmitter.setMaxListeners(25);
-// TODO: Issue: create poi and create multiple pois tests fail when ran with the whole suite but pass individually
+
 suite("Poi API tests", () => {
 
   let user = null;
   let mountains = null;
 
   setup(async () => {
+    poiService.clearAuth();
+    user = await poiService.createUser(maggie);
+    await poiService.authenticate(maggie);
     await poiService.deleteAllPois();
-    await poiService.deleteAllUsers();
     await poiService.deleteAllCategories();
+    await poiService.deleteAllUsers();
     user = await poiService.createUser(maggie);
     await poiService.authenticate(maggie);
     mountains = await poiService.createCategory(categorySample);
