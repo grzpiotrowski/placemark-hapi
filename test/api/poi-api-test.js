@@ -16,6 +16,7 @@ suite("Poi API tests", () => {
     await poiService.deleteAllUsers();
     await poiService.deleteAllCategories();
     user = await poiService.createUser(maggie);
+    await poiService.authenticate(maggie);
     mountains = await poiService.createCategory(categorySample);
     poiSample.userid = user._id;
     poiSample.category = mountains._id;
