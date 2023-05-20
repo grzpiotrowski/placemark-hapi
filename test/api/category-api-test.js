@@ -6,6 +6,8 @@ import { categorySample, testCategories } from "../fixtures.js";
 
 EventEmitter.setMaxListeners(25);
 
+const categories = new Array(testCategories.length);
+
 suite("Category API tests", () => {
 
   setup(async () => {
