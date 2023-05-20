@@ -2,14 +2,19 @@ import { EventEmitter } from "events";
 import { assert } from "chai";
 import { poiService } from "./poi-service.js";
 import { assertSubset } from "../test-utils.js";
-import { categorySample, testCategories } from "../fixtures.js";
+import { maggie, categorySample, testCategories } from "../fixtures.js";
 
 EventEmitter.setMaxListeners(25);
+
+const categories = new Array(testCategories.length);
+let user = null;
 
 suite("Category API tests", () => {
 
   setup(async () => {
     await poiService.deleteAllCategories();
+    user = await poiService.createUser(maggie);
+    await poiService.authenticate(maggie);
   });
 
   teardown(async () => {});

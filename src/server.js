@@ -8,10 +8,12 @@ import Cookie from "@hapi/cookie";
 import dotenv from "dotenv";
 import HapiSwagger from "hapi-swagger";
 import Inert from "@hapi/inert";
+import jwt from "hapi-auth-jwt2";
 import { webRoutes } from "./web-routes.js";
 import { apiRoutes } from "./api-routes.js";
 import { db } from "./models/db.js";
 import { accountsController } from "./controllers/accounts-controller.js";
+import { validate } from "./api/jwt-utils.js";
 
 const result = dotenv.config();
 if (result.error) {
@@ -38,6 +40,7 @@ async function init() {
     Inert,
     Vision,
     Cookie,
+    jwt,
     {
       plugin: HapiSwagger,
       options: swaggerOptions,
@@ -66,6 +69,13 @@ async function init() {
     redirectTo: "/",
     validate: accountsController.validate,
   });
+
+  server.auth.strategy("jwt", "jwt", {
+    key: process.env.cookie_password,
+    validate: validate,
+    verifyOptions: { algorithms: ["HS256"] }
+  });
+
   server.auth.default("session");
 
   db.init("mongo");
