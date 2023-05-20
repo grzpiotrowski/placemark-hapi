@@ -6,7 +6,9 @@ import { createToken } from "./jwt-utils.js";
 
 export const usersApi = {
   find: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request, h) {
       try {
         const users = await db.userStore.getAllUsers();
@@ -22,7 +24,9 @@ export const usersApi = {
   },
 
   findOne: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request, h) {
       try {
         const user = await db.userStore.getUserById(request.params.id);
@@ -62,7 +66,9 @@ export const usersApi = {
   },
 
   deleteAll: {
-    auth: false,
+    auth: {
+      strategy: "jwt",
+    },
     handler: async function (request, h) {
       try {
         await db.userStore.deleteAll();
