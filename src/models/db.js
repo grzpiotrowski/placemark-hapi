@@ -6,6 +6,7 @@ import { connectMongo } from "./mongo/connect.js";
 import { userMongoStore } from "./mongo/user-mongo-store.js";
 import { poiMongoStore } from "./mongo/poi-mongo-store.js";
 import { categoryMongoStore } from "./mongo/category-mongo-store.js";
+import { imageStore } from "./image-store.js";
 
 export const db = {
   userStore: null,
@@ -22,6 +23,7 @@ export const db = {
         this.userStore = userMongoStore;
         this.poiStore = poiMongoStore;
         this.categoryStore = categoryMongoStore;
+        this.imageStore = imageStore;
         connectMongo();
         break;
       default:

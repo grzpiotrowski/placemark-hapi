@@ -90,7 +90,8 @@ export const poiMongoStore = {
 
   async updatePoi(poi, updatedPoi) {
     const poiDoc = await Poi.findOne({ _id: poi._id });
-    poiDoc.title = updatedPoi.name;
+    poiDoc.name = updatedPoi.name;
+    poiDoc.img = updatedPoi.img;
     poiDoc.category = updatedPoi.category;
     poiDoc.description = updatedPoi.description;
     poiDoc.latitude = updatedPoi.latitude;

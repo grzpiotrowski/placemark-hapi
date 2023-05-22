@@ -4,6 +4,7 @@ const { Schema } = Mongoose;
 
 const poiSchema = new Schema({
   name: String,
+  img: String,
   category: {
     type: Schema.Types.ObjectId,
     ref: "Category",
