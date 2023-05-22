@@ -103,4 +103,33 @@ export const poiApi = {
     tags: ["api"],
     description: "Delete all POIs",
   },
+
+  uploadImage: {
+    auth: {
+      strategy: "jwt",
+    },
+    handler: async function (request, h) {
+      try {
+        const poi = await db.poiStore.getPoiById(request.params.id);
+        const file = request.payload.imagefile;
+        if (Object.keys(file).length > 0) {
+          const url = await db.imageStore.uploadImage(request.payload.imagefile);
+          poi.img = url;
+          await db.poiStore.updatePoi(poi, poi);
+        }
+        return h.response().code(204);
+      } catch (err) {
+        console.log(err);
+        return Boom.serverUnavailable("Database Error");
+      }
+    },
+    payload: {
+      multipart: true,
+      output: "data",
+      maxBytes: 209715200,
+      parse: true,
+    },
+    tags: ["api"],
+    description: "Upload an image",
+  },
 };
