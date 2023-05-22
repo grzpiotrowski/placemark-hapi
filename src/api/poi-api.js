@@ -22,6 +22,24 @@ export const poiApi = {
     notes: "Returns all POIs",
   },
 
+  findByUser: {
+    auth: {
+      strategy: "jwt",
+    },
+    handler: async function (request, h) {
+      try {
+        const pois = await db.poiStore.getUserPois(request.params.id);
+        return pois;
+      } catch (err) {
+        return Boom.serverUnavailable("Database Error");
+      }
+    },
+    tags: ["api"],
+    response: { schema: PoiArraySpec, failAction: validationError },
+    description: "Get user POIs",
+    notes: "Returns all POIs belonging to the user",
+  },
+
   findOne: {
     auth: {
       strategy: "jwt",
