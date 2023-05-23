@@ -40,6 +40,11 @@ export const poiService = {
     return res.data;
   },
 
+  async updatePoi(id, poi) {
+    const res = await axios.patch(`${this.placemarkUrl}/api/pois/${id}`, poi);
+    return res.data;
+  },
+
   async deleteAllPois() {
     const response = await axios.delete(`${this.placemarkUrl}/api/pois`);
     return response.data;

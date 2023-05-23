@@ -57,6 +57,7 @@ export const seedData = {
       poi_2 : {
         name: "Tonelagee",
         description: "At 817 metres, Tonelagee is the third highest in the Wicklow mountains. It's name means 'backside to the wind'",
+        img: "https://res.cloudinary.com/dnash1lje/image/upload/v1684786858/qauwc8pttvxd6fqrxpx5.jpg",
         latitude: 53.053606,
         longitude: -6.382171,
         userid: "->users.homer",

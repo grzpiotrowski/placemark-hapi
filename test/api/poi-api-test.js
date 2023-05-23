@@ -68,4 +68,24 @@ suite("Poi API tests", () => {
     }
   });
 
+  test("update a poi", async () => {
+    const createdPoi = await poiService.createPoi(poiSample);
+    assert.isNotNull(createdPoi);
+    assertSubset(poiSample, createdPoi);
+  
+    const updatedData = {
+      name: "New Name",
+      description: "New Description",
+      latitude: 12.1234,
+      longitude: -6.123,
+    };
+  
+    const updatedPoi = await poiService.updatePoi(createdPoi._id, updatedData);
+    assert.isNotNull(updatedPoi);
+    assertSubset(updatedData, updatedPoi);
+  
+    const retrievedPoi = await poiService.getPoi(updatedPoi._id);
+    assertSubset(updatedData, retrievedPoi);
+  });
+
 });

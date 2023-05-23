@@ -22,6 +22,24 @@ export const poiApi = {
     notes: "Returns all POIs",
   },
 
+  findByUser: {
+    auth: {
+      strategy: "jwt",
+    },
+    handler: async function (request, h) {
+      try {
+        const pois = await db.poiStore.getUserPois(request.params.id);
+        return pois;
+      } catch (err) {
+        return Boom.serverUnavailable("Database Error");
+      }
+    },
+    tags: ["api"],
+    response: { schema: PoiArraySpec, failAction: validationError },
+    description: "Get user POIs",
+    notes: "Returns all POIs belonging to the user",
+  },
+
   findOne: {
     auth: {
       strategy: "jwt",
@@ -65,6 +83,37 @@ export const poiApi = {
     notes: "Returns the newly created POI",
     validate: { payload: PoiSpec },
     response: { schema: PoiSpecPlus, failAction: validationError },
+  },
+
+  update: {
+    auth: {
+      strategy: "jwt",
+    },
+    handler: async function (request, h) {
+      try {
+        const updatedPoiData = request.payload;
+        const existingPoi = await db.poiStore.getPoiById(request.params.id);
+        if (!existingPoi) {
+          return Boom.notFound("No POI with this id");
+        }
+
+        const updatedPoi = {
+          ...existingPoi,
+          ...updatedPoiData
+        }
+        
+        const updatedPoiReceived = await db.poiStore.updatePoi(existingPoi, updatedPoi);
+        if (updatedPoiReceived) {
+          return h.response(updatedPoiReceived).code(200);
+        }
+        return Boom.badImplementation("Error updating POI");
+      } catch (err) {
+        return Boom.serverUnavailable("Database Error");
+      }
+    },
+    tags: ["api"],
+    description: "Update a POI",
+    notes: "Updates and returns the modified POI",
   },
 
   deleteOne: {
