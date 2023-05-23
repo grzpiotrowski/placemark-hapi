@@ -85,6 +85,37 @@ export const poiApi = {
     response: { schema: PoiSpecPlus, failAction: validationError },
   },
 
+  update: {
+    auth: {
+      strategy: "jwt",
+    },
+    handler: async function (request, h) {
+      try {
+        const updatedPoiData = request.payload;
+        const existingPoi = await db.poiStore.getPoiById(request.params.id);
+        if (!existingPoi) {
+          return Boom.notFound("No POI with this id");
+        }
+
+        const updatedPoi = {
+          ...existingPoi,
+          ...updatedPoiData
+        }
+        
+        const updatedPoiReceived = await db.poiStore.updatePoi(existingPoi, updatedPoi);
+        if (updatedPoiReceived) {
+          return h.response(updatedPoiReceived).code(200);
+        }
+        return Boom.badImplementation("Error updating POI");
+      } catch (err) {
+        return Boom.serverUnavailable("Database Error");
+      }
+    },
+    tags: ["api"],
+    description: "Update a POI",
+    notes: "Updates and returns the modified POI",
+  },
+
   deleteOne: {
     auth: {
       strategy: "jwt",

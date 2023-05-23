@@ -97,5 +97,6 @@ export const poiMongoStore = {
     poiDoc.latitude = updatedPoi.latitude;
     poiDoc.longitude = updatedPoi.longitude;
     await poiDoc.save();
+    return poiDoc;
   },
 };
