@@ -6,6 +6,7 @@ export const PoiSpec = Joi.object()
   .keys({
     userid: IdSpec,
     name: Joi.string().required().example("Lugnaquilla"),
+    img: Joi.string().optional(),
     category: IdSpec,
     description: Joi.string().optional().example("Pretty high mountain."),
     latitude: Joi.number().allow("").required().example(53.123),
