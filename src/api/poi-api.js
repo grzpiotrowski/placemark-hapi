@@ -181,4 +181,28 @@ export const poiApi = {
     tags: ["api"],
     description: "Upload an image",
   },
+
+  deleteImage: {
+    auth: {
+      strategy: "jwt",
+    },
+    handler: async function (request, h) {
+      try {
+        const poi = await db.poiStore.getPoiById(request.params.id);
+        if (!poi) {
+          return Boom.notFound("No Poi with this id");
+        }
+        await db.imageStore.deleteImage(poi.img);
+        poi.img = undefined;
+        await db.poiStore.updatePoi(poi, poi);
+        return h.response().code(204);
+      } catch (err) {
+        return Boom.serverUnavailable("No Poi with this id");
+      }
+    },
+    tags: ["api"],
+    description: "Delete a POI",
+    validate: { params: { id: IdSpec }, failAction: validationError },
+  },
+
 };

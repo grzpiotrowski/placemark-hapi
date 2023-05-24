@@ -102,3 +102,6 @@ https://futurestud.io/tutorials/hapi-restrict-user-access-with-scopes
 
 * hapi Tutorials - Validation \
 https://hapi.dev/tutorials/validation/?lang=en_US
+
+* Cloudinary Documentation \
+https://cloudinary.com/documentation/image_upload_api_reference
