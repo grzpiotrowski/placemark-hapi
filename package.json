@@ -37,6 +37,7 @@
     "@hapi/hapi": "^21.2.1",
     "@hapi/inert": "^7.1.0",
     "@hapi/vision": "^7.0.0",
+    "bcrypt": "^5.1.0",
     "cloudinary": "^1.37.0",
     "dotenv": "^16.0.3",
     "handlebars": "^4.7.7",

@@ -3,6 +3,7 @@ import { db } from "../models/db.js";
 import { UserSpec, UserSpecPlus, IdSpec, UserArray } from "../models/joi-schemas.js";
 import { validationError } from "./logger.js";
 import { createToken } from "./jwt-utils.js";
+import bcrypt from "bcrypt";
 
 export const usersApi = {
   find: {
@@ -49,6 +50,9 @@ export const usersApi = {
     auth: false,
     handler: async function (request, h) {
       try {
+        const hashedPassword = await bcrypt.hash(request.payload.password, 10);
+        request.payload.password = hashedPassword;
+
         const user = await db.userStore.addUser(request.payload);
         if (user) {
           return h.response(user).code(201);
@@ -90,7 +94,8 @@ export const usersApi = {
         if (!user) {
           return Boom.unauthorized("User not found");
         }
-        if (user.password !== request.payload.password) {
+        const isPasswordValid = await bcrypt.compare(request.payload.password, user.password);
+        if (!isPasswordValid) {
           return Boom.unauthorized("Invalid password");
         }
         const token = createToken(user);
